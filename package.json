@@ -4,14 +4,17 @@
   "description": "Digital Penny Bin Ver6 Simulator",
   "main": "server.js",
   "type": "module",
-
-"scripts": {
-  "build": "npx tsc server.ts --ignoreConfig",
-  "start": "node server.js"
-},
-
+  "scripts": {
+    "build": "npx tsc server.ts --ignoreConfig",
+    "start": "node server.js"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.4"
   }
 }
