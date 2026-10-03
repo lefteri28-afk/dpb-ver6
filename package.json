@@ -1,0 +1,17 @@
+{
+  "name": "dpb-ver6",
+  "version": "1.0.0",
+  "description": "Digital Penny Bin Ver6 Simulator",
+  "main": "server.js",
+  "type": "module",
+
+"scripts": {
+  "build": "npx tsc server.ts --ignoreConfig",
+  "start": "node server.js"
+},
+
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
