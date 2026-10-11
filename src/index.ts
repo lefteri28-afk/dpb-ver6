@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import cors from 'cors';
 import { DPBVer6RoundingEngine, CoinTier } from './roundingEngine';
 
@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.post('/api/rounding', (req, res) => {
+app.post('/api/rounding', (req: Request, res: Response) => {
     try {
         const { rawAmount, currentBinRemainder, currentCommunityVault, tier } = req.body;
         const engine = new DPBVer6RoundingEngine((tier as CoinTier) || 'nickel');
@@ -19,6 +19,10 @@ app.post('/api/rounding', (req, res) => {
     } catch (error: any) {
         res.status(400).json({ error: error.message });
     }
+});
+
+app.get('/health', (req: Request, res: Response) => {
+    res.json({ status: 'healthy', service: 'dpb-ver6' });
 });
 
 const PORT = process.env.PORT || 3000;
