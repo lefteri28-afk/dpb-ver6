@@ -29,3 +29,11 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`DPB ver6 simulator running on port ${PORT}`);
 });
+
+// Serve static frontend files and catch-all route for SPA
+import path from 'path';
+app.use(express.static(path.join(__dirname, 'dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
