@@ -575,3 +575,19 @@ app.post('/api/pos/batch-sync', (req: Request, res: Response) => {
 });
 
 app.listen(3000, () => console.log('🚀 Digital Penny Bin Ver6 Server running on port 3000'));
+
+// Serve static frontend files and catch-all route for SPA
+import path from 'path';
+app.use(express.static(path.join(__dirname, 'dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
+// Serve static frontend files and catch-all route for SPA
+import path from 'path';
+app.use(express.static(path.join(__dirname, 'dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
