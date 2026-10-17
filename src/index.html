@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Penny Bin Simulator (DPB Ver6)</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        h1 { color: #111; margin-top: 0; }
+        .status {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #e1f5fe;
+            color: #0288d1;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        button {
+            background: #0288d1;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover { background: #0277bd; }
+        pre { background: #f1f1f1; padding: 15px; border-radius: 4px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Digital Penny Bin Protocol</h1>
+        <div class="status">DPB Ver6 Simulator Active™</div>
+        <p>Welcome to the Digital Penny Bin settlementless payment interface and rounding engine test harness.</p>
+        
+        <h3>System Health</h3>
+        <button onclick="checkHealth()">Check API Health</button>
+        <pre id="output">Click the button to test API connection...</pre>
+    </div>
+
+    <script>
+        async function checkHealth() {
+            try {
+                const res = await fetch('/health');
+                const data = await res.json();
+                document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+            } catch (err) {
+                document.getElementById('output').textContent = 'Error connecting to API: ' + err.message;
+            }
+        }
+    </script>
+</body>
+</html>
